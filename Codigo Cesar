@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char [] a = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        char [] arr2 = new char[26];
+        System.out.println("Cuantas posiciones desplazamos la letra ");
+        int k = sc.nextInt();
+        sc.nextLine();//esto limpia el  buffer
+        /*for(int i = 0; i < a.length; i++){
+            if(k >= a.length){
+                k= 0;
+                arr2[i] = a[k];
+            }
+            else{
+                arr2[i] = a[k];
+            }
+            k++;
+            //System.out.print(arr2[i] + " ");
+        }*/
+
+        System.out.println("Ingresa mensaje a codificar:");
+        String texto = sc.nextLine().toUpperCase();
+        char[] msg = texto.toCharArray();
+//esta parte codifica el mensaje de lestras normal
+        for(int i = 0; i < msg.length; i++){
+            char c = msg[i];
+            if (c >= 'A' && c <= 'Z') {
+                int pos = c - 'A';
+                int nvPos = (pos + k) % 26;
+                msg[i] = a[nvPos];
+            }
+            /*int pos = c - 'A';
+            int nvPos = (pos + k) % 26;
+            msg[i] = a[nvPos];*/
+            System.out.print(msg[i] + " ");
+        }                                                                                                 //esta parte codifica el mensaje de letras codificadas a letras normales
+//        for(int j = 0; j < msg.length; j++){
+//            char c = msg[j];
+//            if (c >= 'A' && c <= 'Z') {
+//                int pos = c - 'A';
+//                int nvPos = Math.floorMod((pos - k), 26);
+//                msg[j] = a[nvPos];
+//            }
+//            System.out.print(Character.toLowerCase(msg[j]));
+        }
+    }
+}
